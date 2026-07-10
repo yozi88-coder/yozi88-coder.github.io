@@ -19,11 +19,13 @@ function thumbUrl(id) {
   return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 }
 
-// 把「參與」欄位變成一顆顆標籤；沒填就退回顯示分類
+// 標籤＝分類（主要角色）＋「參與」欄位的額外角色
+// 例：分類"剪輯"＋參與"配樂、混音" → 剪輯・配樂・混音 三顆標籤
 function tagsHtml(work) {
   const roles = (work.參與 || "").split(/[、,，・\s]+/).filter(Boolean);
+  const all = [work.分類, ...roles.filter((r) => r !== work.分類)];
   const colorClass = work.分類 === "動態設計" ? "tag-motion" : "tag-edit";
-  return (roles.length ? roles : [work.分類])
+  return all
     .map((r) => `<span class="work-tag ${colorClass}">${r}</span>`)
     .join("");
 }
