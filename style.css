@@ -706,13 +706,14 @@ body {
   color: var(--ink-soft);
 }
 
-/* ── 右下角快速跳轉（捲過門面才浮現） ── */
+/* ── 右下角快速跳轉（只給手機版：單手滑到底時最好按；
+     桌面版有置頂導覽列，不需要） ── */
 .quick-nav {
   position: fixed;
   right: 22px;
   bottom: 26px;
   z-index: 60;
-  display: flex;
+  display: none; /* 桌面版隱藏 */
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -720,6 +721,10 @@ body {
   transform: translateY(14px);
   pointer-events: none;
   transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+@media (max-width: 640px) {
+  .quick-nav { display: flex; } /* 手機版才出現 */
 }
 
 .quick-nav.show {
