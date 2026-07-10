@@ -436,6 +436,13 @@ body {
 
 .work-body { padding: 16px 18px 18px; }
 
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+
 .work-tag {
   display: inline-block;
   font-size: 0.7rem;
@@ -443,7 +450,6 @@ body {
   padding: 2px 13px;
   border-radius: 999px;
   border: 1px solid var(--ink);
-  margin-bottom: 9px;
 }
 
 .work-tag.tag-motion { background: var(--tag-motion); }
@@ -713,7 +719,7 @@ body {
   right: 22px;
   bottom: 26px;
   z-index: 60;
-  display: none; /* 桌面版隱藏 */
+  display: flex; /* 桌面版顯示 */
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -724,7 +730,7 @@ body {
 }
 
 @media (max-width: 640px) {
-  .quick-nav { display: flex; } /* 手機版才出現 */
+  .quick-nav { display: none; } /* 手機版隱藏 */
 }
 
 .quick-nav.show {
@@ -835,15 +841,7 @@ body {
 
 .lightbox-info { padding: 20px 26px 24px; }
 
-.lightbox-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  padding: 2px 13px;
-  margin-bottom: 8px;
-}
+.lightbox-tags { margin-bottom: 8px; }
 
 .lightbox-title { font-size: 1.15rem; letter-spacing: 0.03em; }
 

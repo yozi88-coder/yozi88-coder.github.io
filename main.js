@@ -19,6 +19,15 @@ function thumbUrl(id) {
   return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 }
 
+// 把「參與」欄位變成一顆顆標籤；沒填就退回顯示分類
+function tagsHtml(work) {
+  const roles = (work.參與 || "").split(/[、,，・\s]+/).filter(Boolean);
+  const colorClass = work.分類 === "動態設計" ? "tag-motion" : "tag-edit";
+  return (roles.length ? roles : [work.分類])
+    .map((r) => `<span class="work-tag ${colorClass}">${r}</span>`)
+    .join("");
+}
+
 // ── 捲動浮現：元素進到畫面才輕輕出現 ──
 const revealObserver = new IntersectionObserver(
   (entries) => {
@@ -113,7 +122,7 @@ function renderWorks(filter) {
         ${work.時長 ? `<span class="work-duration">${work.時長}</span>` : ""}
       </div>
       <div class="work-body">
-        <span class="work-tag ${work.分類 === "動態設計" ? "tag-motion" : "tag-edit"}">${work.分類}</span>
+        <div class="work-tags">${tagsHtml(work)}</div>
         <h3 class="work-title">${work.名稱}</h3>
       </div>
     `;
@@ -146,13 +155,13 @@ filterBar.addEventListener("click", (event) => {
 const lightbox = document.getElementById("lightbox");
 const lightboxFrame = document.getElementById("lightboxFrame");
 const lightboxTitle = document.getElementById("lightboxTitle");
-const lightboxTag = document.getElementById("lightboxTag");
+const lightboxTags = document.getElementById("lightboxTags");
 const lightboxDesc = document.getElementById("lightboxDesc");
 
 function openLightbox(work, id) {
   lightboxFrame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
   lightboxTitle.textContent = work.名稱;
-  lightboxTag.textContent = work.分類;
+  lightboxTags.innerHTML = tagsHtml(work);
   lightboxDesc.textContent = work.說明 || "";
   lightboxDesc.style.display = work.說明 ? "" : "none";
   document.getElementById("lightboxYt").href = `https://www.youtube.com/watch?v=${id}`;
