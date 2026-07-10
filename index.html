@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>陳毅勳｜動態設計 × 影像剪輯</title>
+  <meta name="description" content="陳毅勳的作品集——動態設計與影像剪輯作品、經歷與聯絡方式。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Klee+One:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════ 頁首導覽 ══════════ -->
+  <header class="site-header">
+    <a class="logo" href="#top">陳毅勳<span class="logo-en">PORTFOLIO</span></a>
+    <nav class="site-nav">
+      <a href="#works">看作品</a>
+      <a href="#about">聊聊我吧！</a>
+      <a class="nav-cta" href="#contact">找我合作</a>
+    </nav>
+  </header>
+
+  <!-- ══════════ 開頭門面 ══════════ -->
+  <section class="hero" id="top">
+    <!-- 手繪小元素（暫代版，之後可換成柚子插畫風格的正式版） -->
+    <svg class="doodle doodle-sparkle-a" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z"/>
+    </svg>
+    <svg class="doodle doodle-sparkle-b" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z"/>
+    </svg>
+    <svg class="doodle doodle-camera" viewBox="0 0 60 56" aria-hidden="true">
+      <rect x="8" y="18" width="44" height="30" rx="6"/>
+      <circle cx="30" cy="33" r="9"/>
+      <circle cx="30" cy="33" r="3.5"/>
+      <rect x="16" y="10" width="13" height="8" rx="2"/>
+      <circle cx="45" cy="26" r="1.6"/>
+    </svg>
+    <svg class="doodle doodle-play" viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="18"/>
+      <path d="M17 14 L31 22 L17 30 Z"/>
+    </svg>
+
+    <p class="hero-en">MOTION DESIGN × VIDEO EDITING</p>
+    <h1 class="hero-title" id="heroTitle">陳毅勳</h1>
+    <div class="hero-underline wave-line wave-gold" aria-hidden="true"></div>
+    <p class="hero-tagline" id="heroTagline"></p>
+    <div class="hero-reel">
+      <button class="reel-button" id="reelButton">
+        ▶ 看 Showreel
+      </button>
+    </div>
+
+    <p class="hero-vertical">動態設計 ・ 影像剪輯</p>
+
+    <!-- 地平線＋站在上面的小黑（暫代造型） -->
+    <div class="hero-ground" aria-hidden="true"></div>
+    <svg class="doodle doodle-dog" viewBox="0 0 120 80" aria-hidden="true">
+      <path class="dog-tail" d="M20 48 C10 42 7 32 14 25" />
+      <ellipse cx="52" cy="54" rx="30" ry="16"/>
+      <rect x="31" y="61" width="7" height="17" rx="3.5"/>
+      <rect x="45" y="64" width="7" height="14" rx="3.5"/>
+      <rect x="60" y="64" width="7" height="14" rx="3.5"/>
+      <rect x="73" y="61" width="7" height="17" rx="3.5"/>
+      <circle cx="88" cy="38" r="15"/>
+      <ellipse cx="100" cy="43" rx="7" ry="5"/>
+      <path d="M79 27 q-3 -13 8 -13 q3 7 -1 12 z"/>
+      <path d="M93 24 q5 -11 13 -8 q0 9 -7 12 z"/>
+      <circle class="dog-eye" cx="90" cy="36" r="2"/>
+    </svg>
+    <div class="scroll-hint">SCROLL ↓</div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true">
+    <div class="wave-line wave-soft" aria-hidden="true"></div>
+  </div>
+
+  <!-- ══════════ 作品區 ══════════ -->
+  <section class="section" id="works">
+    <h2 class="section-title"><span class="bubble-title">WORKS<small>作品</small></span></h2>
+
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn is-active" data-filter="動態設計">動態設計</button>
+      <button class="filter-btn" data-filter="剪輯">剪輯</button>
+    </div>
+
+    <div class="works-grid" id="worksGrid"><!-- 作品卡片由 works.js 自動長出來 --></div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true">
+    <div class="wave-line wave-soft" aria-hidden="true"></div>
+  </div>
+
+  <!-- ══════════ 聊聊我吧！（聊天式關於我） ══════════ -->
+  <section class="section" id="about">
+    <h2 class="section-title"><span class="bubble-title">ABOUT<small>聊聊我吧！</small></span></h2>
+
+    <div class="chat-window">
+      <div class="chat-window-header">
+        <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="chat-window-title">小黑的快問快答</span>
+      </div>
+      <div class="about-chat" id="aboutChat"><!-- 對話由 works.js 的 ABOUT_CHAT 自動長出來 --></div>
+    </div>
+
+    <!-- 簡歷卡：給趕時間的案主一眼看完 -->
+    <div class="resume-card" id="resumeCard">
+      <h3 class="resume-name">陳毅勳</h3>
+      <p class="resume-role">動態設計 × 影像剪輯</p>
+      <div class="resume-intro" id="resumeIntro"><!-- 自我介紹由 works.js 的 INTRO 自動長出來 --></div>
+      <div class="resume-recent">
+        <h4 class="recent-heading">近期作品</h4>
+        <ul class="recent-list" id="recentList"><!-- 年表由 works.js 的 RECENT_WORKS 自動長出來 --></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 聯絡方式 ══════════ -->
+  <footer class="site-footer" id="contact">
+    <h2 class="section-title"><span class="bubble-title">CONTACT<small>找我合作</small></span></h2>
+    <ul class="contact-list" id="contactList"></ul>
+    <p class="copyright">© 2026 陳毅勳</p>
+  </footer>
+
+  <!-- ══════════ 右下角快速跳轉 ══════════ -->
+  <nav class="quick-nav" id="quickNav" aria-label="快速跳轉">
+    <a href="#works" class="qn-pill">作品</a>
+    <a href="#about" class="qn-pill">聊聊</a>
+    <a href="#contact" class="qn-pill">合作</a>
+    <a href="#top" class="qn-top" aria-label="回到頂部">↑</a>
+  </nav>
+
+  <!-- ══════════ 影片彈出視窗 ══════════ -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-panel">
+      <button class="lightbox-close" id="lightboxClose" aria-label="關閉">✕</button>
+      <div class="lightbox-video">
+        <iframe id="lightboxFrame" src="" title="作品影片"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="lightbox-info">
+        <span class="lightbox-tag" id="lightboxTag"></span>
+        <h3 class="lightbox-title" id="lightboxTitle"></h3>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+        <a class="lightbox-yt" id="lightboxYt" href="" target="_blank" rel="noopener">↗ 影片無法播放？點我在 YouTube 開啟</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="works.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
