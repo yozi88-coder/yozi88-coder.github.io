@@ -292,3 +292,40 @@ addEventListener(
   },
   { passive: true }
 );
+
+// ── 門面小元素的輕微視差 ──
+// 捲動時讓小元素比內容慢半拍往上移，做出前後層次。
+// 數字＝落後比例，越大越像「遠景」；小黑坐在地平線上所以不動牠。
+// 注意：這裡用 translate 屬性（不是 transform），才不會蓋掉 floatDrift 的飄浮動畫。
+const PARALLAX_DOODLES = [
+  [".doodle-sparkle-a", 0.22],
+  [".doodle-sparkle-b", 0.14],
+  [".doodle-camera", 0.28],
+  [".doodle-play", 0.18],
+].flatMap(([selector, lag]) => {
+  const el = document.querySelector(selector);
+  return el ? [{ el, lag }] : [];
+});
+
+if (
+  PARALLAX_DOODLES.length &&
+  !matchMedia("(prefers-reduced-motion: reduce)").matches &&
+  "translate" in document.body.style
+) {
+  let parallaxQueued = false;
+  addEventListener(
+    "scroll",
+    () => {
+      if (parallaxQueued) return;
+      parallaxQueued = true;
+      requestAnimationFrame(() => {
+        parallaxQueued = false;
+        if (scrollY > innerHeight * 1.3) return; // 門面已捲出畫面，不用再算
+        for (const { el, lag } of PARALLAX_DOODLES) {
+          el.style.translate = `0 ${(scrollY * lag).toFixed(1)}px`;
+        }
+      });
+    },
+    { passive: true }
+  );
+}
